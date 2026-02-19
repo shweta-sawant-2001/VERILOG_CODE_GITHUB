@@ -1,0 +1,14 @@
+module (
+    input clk;
+    input ff;
+    output out_ff;
+)
+wire ff_out;
+
+always @(posedge clk) begin
+    ff_out <= ff;
+    out_ff <= ff_out;
+    
+end
+
+endmodule
