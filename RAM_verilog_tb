@@ -1,0 +1,42 @@
+module RAM_verilog_tb;
+    reg clk, en_w;
+    reg [3:0] addr;
+    reg [7:0]din;
+    reg [7:0]dout;
+
+//instantiate DUT
+
+RAM_verilog dut(
+    .clk(clk),
+    .en_w(en_w),
+    .addr(addr),
+    .din(din),
+    .dout(dout)
+);
+//clk generation
+initial clk = 0;
+always #5 clk = ~clk;
+
+initial begin
+    en_w = 0;
+    addr = 0;
+    din = 0;
+
+    #10;
+
+    addr = 4'd4;
+    din = 8'hAA;
+    en_w = 1;
+
+    #10;
+
+    en_w = 0;
+
+    if(dout!= 8'hAA)
+        $error("Test failed");
+    else
+        $display("Test passed!!");
+end
+
+
+endmodule
