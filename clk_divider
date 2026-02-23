@@ -1,0 +1,12 @@
+module clk_divide(
+    input clk, reset,
+    output clk_o
+)
+always @(posedge clk) begin
+    if(reset)
+        clk_o <= 0;
+    else
+        clk_o <= ~clk_o;
+    
+end
+endmodule
