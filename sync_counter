@@ -1,0 +1,14 @@
+module sync_counter(
+    input clk, reset, enable;
+    output [3:0]out;
+
+);
+always @(posedge clk) begin
+    if(reset)
+    
+        out <= out + 1;
+    else
+        out <= 4'd0;
+end
+
+endmodule
